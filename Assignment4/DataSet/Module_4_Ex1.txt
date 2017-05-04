@@ -1,0 +1,9 @@
+Sam	56	Male	650
+Rama	35	Female	250
+Prithi	42	Female	300
+Bill	67	Male	250
+Jack	29	Male	300
+Shruthi	41	Female	600
+Rhagu	33	Male	240
+Jasmin	45	Female	150
+
