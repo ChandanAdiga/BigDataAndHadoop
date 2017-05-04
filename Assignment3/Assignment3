@@ -1,0 +1,7 @@
+Assignment 01:
+	1. For the given tab separated input file (Module3_Ex1.txt), write a Map Reduce program to
+	remove any records where value of 3rd Column is greater than 20.
+	2. For the given CSV file (Module3_Ex1.txt), assume the first field as key and write a Map Reduce
+	program to generate the following stats:
+	Count, Sum, Max, Min
+	3. Solve problem 2 by using a Combiner.

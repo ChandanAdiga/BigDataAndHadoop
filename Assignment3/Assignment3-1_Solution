@@ -1,0 +1,79 @@
+m1033286@a4ml12199l:~$ hadoop fs -copyFromLocal Desktop/GIT_HADOOP/BigDataAndHadoop/Assignment3/DataSet/Module3_Ext1.txt /inputs/mr_inputs
+17/05/04 10:53:04 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+m1033286@a4ml12199l:~$ hadoop jar Desktop/GIT_HADOOP/BigDataAndHadoop/Assignment3/JAR/MR_Trimmer.jar org.chandan.hadoop.trim.Trimmer /inputs/mr_inputs/Module3_Ext1.txt /output_mr_trimmer17/05/04 10:54:12 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+17/05/04 10:54:13 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
+17/05/04 10:54:13 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
+17/05/04 10:54:14 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+17/05/04 10:54:14 INFO mapred.FileInputFormat: Total input paths to process : 1
+17/05/04 10:54:14 INFO mapreduce.JobSubmitter: number of splits:2
+17/05/04 10:54:14 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1493868880322_0007
+17/05/04 10:54:15 INFO impl.YarnClientImpl: Submitted application application_1493868880322_0007
+17/05/04 10:54:15 INFO mapreduce.Job: The url to track the job: http://a4ml12199l:8088/proxy/application_1493868880322_0007/
+17/05/04 10:54:15 INFO mapreduce.Job: Running job: job_1493868880322_0007
+17/05/04 10:54:22 INFO mapreduce.Job: Job job_1493868880322_0007 running in uber mode : false
+17/05/04 10:54:22 INFO mapreduce.Job:  map 0% reduce 0%
+17/05/04 10:54:30 INFO mapreduce.Job:  map 100% reduce 0%
+17/05/04 10:54:36 INFO mapreduce.Job:  map 100% reduce 100%
+17/05/04 10:54:36 INFO mapreduce.Job: Job job_1493868880322_0007 completed successfully
+17/05/04 10:54:36 INFO mapreduce.Job: Counters: 49
+	File System Counters
+		FILE: Number of bytes read=56
+		FILE: Number of bytes written=318510
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=334
+		HDFS: Number of bytes written=30
+		HDFS: Number of read operations=9
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=2
+	Job Counters 
+		Launched map tasks=2
+		Launched reduce tasks=1
+		Data-local map tasks=2
+		Total time spent by all maps in occupied slots (ms)=11367
+		Total time spent by all reduces in occupied slots (ms)=3576
+		Total time spent by all map tasks (ms)=11367
+		Total time spent by all reduce tasks (ms)=3576
+		Total vcore-seconds taken by all map tasks=11367
+		Total vcore-seconds taken by all reduce tasks=3576
+		Total megabyte-seconds taken by all map tasks=11639808
+		Total megabyte-seconds taken by all reduce tasks=3661824
+	Map-Reduce Framework
+		Map input records=5
+		Map output records=2
+		Map output bytes=46
+		Map output materialized bytes=62
+		Input split bytes=214
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=2
+		Reduce shuffle bytes=62
+		Reduce input records=2
+		Reduce output records=2
+		Spilled Records=4
+		Shuffled Maps =2
+		Failed Shuffles=0
+		Merged Map outputs=2
+		GC time elapsed (ms)=575
+		CPU time spent (ms)=3100
+		Physical memory (bytes) snapshot=687345664
+		Virtual memory (bytes) snapshot=5748264960
+		Total committed heap usage (bytes)=527958016
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=120
+	File Output Format Counters 
+		Bytes Written=30
+m1033286@a4ml12199l:~$ hadoop fs -cat /output_mr_trimmer/*
+17/05/04 10:55:24 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+10035	SF	16.00
+10037	NY	19.89
+m1033286@a4ml12199l:~$ 
+
