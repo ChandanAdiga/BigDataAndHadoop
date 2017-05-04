@@ -1,0 +1,169 @@
+m1033286@a4ml12199l:~$ hadoop fs -mkdir /inputs
+17/05/03 23:08:26 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+m1033286@a4ml12199l:~$ hadoop fs -mkdir /inputs/mr_inputs
+17/05/03 23:08:44 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+m1033286@a4ml12199l:~$ hadoop fs -mkdir /inputs/pig_inputs
+17/05/03 23:09:02 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+m1033286@a4ml12199l:~$ hadoop fs -mkdir /inputs/project_inputs
+17/05/03 23:09:13 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+m1033286@a4ml12199l:~$ hadoop fs -ls /inputs
+17/05/03 23:11:00 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Found 3 items
+drwxr-xr-x   - m1033286 supergroup          0 2017-05-03 23:08 /inputs/mr_inputs
+drwxr-xr-x   - m1033286 supergroup          0 2017-05-03 23:09 /inputs/pig_inputs
+drwxr-xr-x   - m1033286 supergroup          0 2017-05-03 23:09 /inputs/project_inputs
+m1033286@a4ml12199l:~$ 
+m1033286@a4ml12199l:~$ 
+m1033286@a4ml12199l:~$ hadoop fs -put Desktop/names.txt /inputs/mr_inputs/
+17/05/03 23:11:51 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+m1033286@a4ml12199l:~$ hadoop fs -ls /inputs/mr_inputs
+17/05/03 23:12:07 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Found 1 items
+-rw-r--r--   1 m1033286 supergroup        555 2017-05-03 23:11 /inputs/mr_inputs/names.txt
+m1033286@a4ml12199l:~$ 
+m1033286@a4ml12199l:~$ 
+m1033286@a4ml12199l:~$ 
+m1033286@a4ml12199l:~$ 
+m1033286@a4ml12199l:~$ cd hadoop-2.6.1/share/hadoop/mapreduce/
+m1033286@a4ml12199l:~/hadoop-2.6.1/share/hadoop/mapreduce$ hadoop jar hadoop-mapreduce-examples-2.6.1.jar wordcount /inputs/mr_inputs/names.txt /output
+17/05/03 23:14:37 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+17/05/03 23:14:38 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
+17/05/03 23:14:39 INFO input.FileInputFormat: Total input paths to process : 1
+17/05/03 23:14:39 INFO mapreduce.JobSubmitter: number of splits:1
+17/05/03 23:14:40 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1493822134210_0003
+17/05/03 23:14:40 INFO impl.YarnClientImpl: Submitted application application_1493822134210_0003
+17/05/03 23:14:40 INFO mapreduce.Job: The url to track the job: http://a4ml12199l:8088/proxy/application_1493822134210_0003/
+17/05/03 23:14:40 INFO mapreduce.Job: Running job: job_1493822134210_0003
+17/05/03 23:14:47 INFO mapreduce.Job: Job job_1493822134210_0003 running in uber mode : false
+17/05/03 23:14:47 INFO mapreduce.Job:  map 0% reduce 0%
+17/05/03 23:14:52 INFO mapreduce.Job:  map 100% reduce 0%
+17/05/03 23:14:58 INFO mapreduce.Job:  map 100% reduce 100%
+17/05/03 23:14:59 INFO mapreduce.Job: Job job_1493822134210_0003 completed successfully
+17/05/03 23:14:59 INFO mapreduce.Job: Counters: 49
+	File System Counters
+		FILE: Number of bytes read=887
+		FILE: Number of bytes written=214011
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=668
+		HDFS: Number of bytes written=613
+		HDFS: Number of read operations=6
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=2
+	Job Counters 
+		Launched map tasks=1
+		Launched reduce tasks=1
+		Data-local map tasks=1
+		Total time spent by all maps in occupied slots (ms)=3417
+		Total time spent by all reduces in occupied slots (ms)=3626
+		Total time spent by all map tasks (ms)=3417
+		Total time spent by all reduce tasks (ms)=3626
+		Total vcore-seconds taken by all map tasks=3417
+		Total vcore-seconds taken by all reduce tasks=3626
+		Total megabyte-seconds taken by all map tasks=3499008
+		Total megabyte-seconds taken by all reduce tasks=3713024
+	Map-Reduce Framework
+		Map input records=3
+		Map output records=87
+		Map output bytes=901
+		Map output materialized bytes=887
+		Input split bytes=113
+		Combine input records=87
+		Combine output records=67
+		Reduce input groups=67
+		Reduce shuffle bytes=887
+		Reduce input records=67
+		Reduce output records=67
+		Spilled Records=134
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=174
+		CPU time spent (ms)=2150
+		Physical memory (bytes) snapshot=425492480
+		Virtual memory (bytes) snapshot=3835711488
+		Total committed heap usage (bytes)=311951360
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=555
+	File Output Format Counters 
+		Bytes Written=613
+m1033286@a4ml12199l:~/hadoop-2.6.1/share/hadoop/mapreduce$ cd
+m1033286@a4ml12199l:~$ hadoop fs -cat /output/*
+17/05/03 23:15:19 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Apache	1
+Hadoop	1
+It	1
+Rather	1
+The	1
+a	3
+across	1
+allows	1
+and	2
+application	1
+at	1
+be	1
+cluster	1
+clusters	1
+computation	1
+computers	1
+computers,	1
+data	1
+deliver	1
+delivering	1
+designed	2
+detect	1
+distributed	1
+each	2
+failures	1
+failures.	1
+for	1
+framework	1
+from	1
+handle	1
+hardware	1
+high-availability,	1
+highly-available	1
+is	3
+itself	1
+large	1
+layer,	1
+library	2
+local	1
+machines,	1
+may	1
+models.	1
+of	6
+offering	1
+on	2
+processing	1
+programming	1
+prone	1
+rely	1
+scale	1
+servers	1
+service	1
+sets	1
+simple	1
+single	1
+so	1
+software	1
+storage.	1
+than	1
+that	1
+the	3
+thousands	1
+to	5
+top	1
+up	1
+using	1
+which	1
+m1033286@a4ml12199l:~$ 
+

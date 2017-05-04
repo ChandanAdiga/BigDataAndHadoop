@@ -1,0 +1,38 @@
+1) SVN Link :
+	TRUNK:
+		[http://svn.apache.org/viewvc/hadoop/common/trunk/]
+	BRANCH 2.2.0:
+		[http://svn.apache.org/viewvc/hadoop/common/branches/branch-2.2.0/]
+
+
+2) BUILD INSTRUCTION:
+	LINK:
+		[http://svn.apache.org/viewvc/hadoop/common/branches/branch-2.2.0/BUILDING.txt?view=co]
+	Build system: Maven 3.0 or later
+	
+VM set up was not done as I use ubuntu 14.04 itself. So, hadoop was set up in host machine itself. Also, i have set up hadoop-2.6.1:
+
+		m1033286@a4ml12199l:~$ du -h --max-depth=3 hadoop-2.6.1/
+		184K	hadoop-2.6.1/etc/hadoop
+		188K	hadoop-2.6.1/etc
+		93M	hadoop-2.6.1/share/doc/hadoop
+		93M	hadoop-2.6.1/share/doc
+		26M	hadoop-2.6.1/share/hadoop/kms
+		18M	hadoop-2.6.1/share/hadoop/mapreduce
+		28M	hadoop-2.6.1/share/hadoop/hdfs
+		36M	hadoop-2.6.1/share/hadoop/tools
+		23M	hadoop-2.6.1/share/hadoop/yarn
+		36M	hadoop-2.6.1/share/hadoop/httpfs
+		50M	hadoop-2.6.1/share/hadoop/common
+		213M	hadoop-2.6.1/share/hadoop
+		306M	hadoop-2.6.1/share
+		4.8M	hadoop-2.6.1/lib/native
+		4.9M	hadoop-2.6.1/lib
+		60K	hadoop-2.6.1/include
+		124K	hadoop-2.6.1/sbin
+		4.0K	hadoop-2.6.1/logs/userlogs
+		1.7M	hadoop-2.6.1/logs
+		64K	hadoop-2.6.1/libexec
+		444K	hadoop-2.6.1/bin
+		314M	hadoop-2.6.1/
+

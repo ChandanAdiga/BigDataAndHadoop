@@ -1,0 +1,92 @@
+m1033286@a4ml12199l:~$ hadoop jar Desktop/GIT_HADOOP/BigDataAndHadoop/Assignment2/JAR/MR_LineRemover.jar org.chandan.hadoop.lineremove.LineRemover /inputs/mr_inputs/lines.txt /output_mr_lineremove
+17/05/04 09:51:58 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+17/05/04 09:51:59 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
+17/05/04 09:51:59 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
+17/05/04 09:51:59 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+17/05/04 09:52:00 INFO mapred.FileInputFormat: Total input paths to process : 1
+17/05/04 09:52:00 INFO mapreduce.JobSubmitter: number of splits:2
+17/05/04 09:52:00 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1493868880322_0006
+17/05/04 09:52:00 INFO impl.YarnClientImpl: Submitted application application_1493868880322_0006
+17/05/04 09:52:00 INFO mapreduce.Job: The url to track the job: http://a4ml12199l:8088/proxy/application_1493868880322_0006/
+17/05/04 09:52:00 INFO mapreduce.Job: Running job: job_1493868880322_0006
+17/05/04 09:52:08 INFO mapreduce.Job: Job job_1493868880322_0006 running in uber mode : false
+17/05/04 09:52:08 INFO mapreduce.Job:  map 0% reduce 0%
+17/05/04 09:52:16 INFO mapreduce.Job:  map 100% reduce 0%
+17/05/04 09:52:22 INFO mapreduce.Job:  map 100% reduce 100%
+17/05/04 09:52:22 INFO mapreduce.Job: Job job_1493868880322_0006 completed successfully
+17/05/04 09:52:22 INFO mapreduce.Job: Counters: 49
+	File System Counters
+		FILE: Number of bytes read=284
+		FILE: Number of bytes written=319008
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=676
+		HDFS: Number of bytes written=248
+		HDFS: Number of read operations=9
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=2
+	Job Counters 
+		Launched map tasks=2
+		Launched reduce tasks=1
+		Data-local map tasks=2
+		Total time spent by all maps in occupied slots (ms)=11270
+		Total time spent by all reduces in occupied slots (ms)=3853
+		Total time spent by all map tasks (ms)=11270
+		Total time spent by all reduce tasks (ms)=3853
+		Total vcore-seconds taken by all map tasks=11270
+		Total vcore-seconds taken by all reduce tasks=3853
+		Total megabyte-seconds taken by all map tasks=11540480
+		Total megabyte-seconds taken by all reduce tasks=3945472
+	Map-Reduce Framework
+		Map input records=11
+		Map output records=3
+		Map output bytes=272
+		Map output materialized bytes=290
+		Input split bytes=200
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=3
+		Reduce shuffle bytes=290
+		Reduce input records=3
+		Reduce output records=3
+		Spilled Records=6
+		Shuffled Maps =2
+		Failed Shuffles=0
+		Merged Map outputs=2
+		GC time elapsed (ms)=393
+		CPU time spent (ms)=3100
+		Physical memory (bytes) snapshot=690589696
+		Virtual memory (bytes) snapshot=5748326400
+		Total committed heap usage (bytes)=517472256
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=476
+	File Output Format Counters 
+		Bytes Written=248
+m1033286@a4ml12199l:~$ hadoop fs -cat /output_mr_lineremove/*
+17/05/04 09:53:06 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Okay. This one you will see because it has huge length.
+But again because of the large size i should be considered. Good to see you again too!
+Hey, I am again back because of huge size. Definetly we should see often. Wait for some more time, Okay?
+m1033286@a4ml12199l:~$ hadoop fs -cat /inputs/mr_inputs/lines.txt
+17/05/04 09:53:33 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Okay. This one you will see because it has huge length.
+No see me.
+But again because of the large size i should be considered. Good to see you again too!
+I dont see you
+Me too!
+Still?
+Ok.
+Hey, I am again back because of huge size. Definetly we should see often. Wait for some more time, Okay?
+Well then,
+Bye
+Good day
+m1033286@a4ml12199l:~$ 
+

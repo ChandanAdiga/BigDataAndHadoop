@@ -1,0 +1,8 @@
+Assignment 02:
+	Complete the following three tasks:
+	1. Create a file with some data (about 3 to 5 sentences per line) and copy it to a hdfs
+	location of your choice
+	2. Write a MapReduce program to count the number of lines in the file created in the
+	previous task (task 1 of this assignment)
+	3. Write a MapReduce program to remove the records for which the length of the record is
+	less than 15

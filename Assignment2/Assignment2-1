@@ -1,0 +1,11 @@
+Assignment 01:
+	Complete the following four tasks:
+	1. Create hdfs directory /inputs. Under this directory create following directories
+	a. mr_inputs
+	b. pig_inputs
+	c. project_inputs
+	2. Create a simple text file (Let’s say write some names, one per line) and save it in
+	/inputs/mr_inputs hdfs directory
+	3. Try to run in-built word count program with the input you created in Task 2 of this
+	assignment
+	4. Validate your result through command line
