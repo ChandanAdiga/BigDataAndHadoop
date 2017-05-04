@@ -1,0 +1,94 @@
+m1033286@a4ml12199l:~$ hadoop jar Desktop/GIT_HADOOP/BigDataAndHadoop/Assignment4/JAR/MR_ProfileWithCounter.jar org.chandan.hadoop.counter.RecordCounter /inputs/mr_inputs/Module_4_Ex2.txt /output_mr_counter
+17/05/04 23:58:06 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+17/05/04 23:58:06 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
+17/05/04 23:58:06 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
+17/05/04 23:58:07 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+17/05/04 23:58:07 INFO mapred.FileInputFormat: Total input paths to process : 1
+17/05/04 23:58:07 INFO mapreduce.JobSubmitter: number of splits:2
+17/05/04 23:58:07 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1493917083859_0002
+17/05/04 23:58:07 INFO impl.YarnClientImpl: Submitted application application_1493917083859_0002
+17/05/04 23:58:07 INFO mapreduce.Job: The url to track the job: http://a4ml12199l:8088/proxy/application_1493917083859_0002/
+17/05/04 23:58:07 INFO mapreduce.Job: Running job: job_1493917083859_0002
+17/05/04 23:58:13 INFO mapreduce.Job: Job job_1493917083859_0002 running in uber mode : false
+17/05/04 23:58:13 INFO mapreduce.Job:  map 0% reduce 0%
+17/05/04 23:58:19 INFO mapreduce.Job:  map 100% reduce 0%
+17/05/04 23:58:25 INFO mapreduce.Job:  map 100% reduce 100%
+17/05/04 23:58:25 INFO mapreduce.Job: Job job_1493917083859_0002 completed successfully
+17/05/04 23:58:25 INFO mapreduce.Job: Counters: 52
+	File System Counters
+		FILE: Number of bytes read=6
+		FILE: Number of bytes written=317411
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=381
+		HDFS: Number of bytes written=0
+		HDFS: Number of read operations=9
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=2
+	Job Counters 
+		Launched map tasks=2
+		Launched reduce tasks=1
+		Data-local map tasks=2
+		Total time spent by all maps in occupied slots (ms)=7671
+		Total time spent by all reduces in occupied slots (ms)=2521
+		Total time spent by all map tasks (ms)=7671
+		Total time spent by all reduce tasks (ms)=2521
+		Total vcore-seconds taken by all map tasks=7671
+		Total vcore-seconds taken by all reduce tasks=2521
+		Total megabyte-seconds taken by all map tasks=7855104
+		Total megabyte-seconds taken by all reduce tasks=2581504
+	Map-Reduce Framework
+		Map input records=7
+		Map output records=0
+		Map output bytes=0
+		Map output materialized bytes=12
+		Input split bytes=214
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=0
+		Reduce shuffle bytes=12
+		Reduce input records=0
+		Reduce output records=0
+		Spilled Records=0
+		Shuffled Maps =2
+		Failed Shuffles=0
+		Merged Map outputs=2
+		GC time elapsed (ms)=339
+		CPU time spent (ms)=1790
+		Physical memory (bytes) snapshot=687452160
+		Virtual memory (bytes) snapshot=5747159040
+		Total committed heap usage (bytes)=525860864
+	RECORD_COUNTER
+		COUNTER_BETWEEN_10_50=4
+		COUNTER_GREATER_THAN_50=2
+		COUNTER_LESS_THAN_10=1
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=167
+	File Output Format Counters 
+		Bytes Written=0
+Records with value <=10 : 1
+Records with value >=50 : 2
+Records with 10< value <50 : 4
+m1033286@a4ml12199l:~$ 
+m1033286@a4ml12199l:~$ hadoop fs -cat /inputs/mr_inputs/Module_4_Ex2.txt
+17/05/04 23:58:43 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Jack	100	Male	
+Bill	20	Male
+Joe	3	Male
+Cristina	30	Female
+Taylor	20	Female
+Emma	34	Female
+Smith	51	Male
+m1033286@a4ml12199l:~$ hadoop fs -cat /output_mr_counter/*
+17/05/04 23:59:03 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+m1033286@a4ml12199l:~$ 
+m1033286@a4ml12199l:~$ 
+
