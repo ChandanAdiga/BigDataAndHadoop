@@ -1,0 +1,105 @@
+m1033286@a4ml12199l:~$ hadoop jar Desktop/GIT_HADOOP/BigDataAndHadoop/Assignment4/JAR/MR_MapSideJoinStoreLocationSales.jar /inputs/mr_inputs/store_sales /output_mr_mapsidejoin
+17/05/06 01:58:50 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+17/05/06 01:58:51 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
+17/05/06 01:58:51 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+17/05/06 01:58:52 INFO input.FileInputFormat: Total input paths to process : 1
+17/05/06 01:58:52 INFO mapreduce.JobSubmitter: number of splits:1
+17/05/06 01:58:52 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1493988177333_0007
+17/05/06 01:58:52 INFO impl.YarnClientImpl: Submitted application application_1493988177333_0007
+17/05/06 01:58:52 INFO mapreduce.Job: The url to track the job: http://a4ml12199l:8088/proxy/application_1493988177333_0007/
+17/05/06 01:58:52 INFO mapreduce.Job: Running job: job_1493988177333_0007
+17/05/06 01:59:00 INFO mapreduce.Job: Job job_1493988177333_0007 running in uber mode : false
+17/05/06 01:59:00 INFO mapreduce.Job:  map 0% reduce 0%
+17/05/06 01:59:06 INFO mapreduce.Job:  map 100% reduce 0%
+17/05/06 01:59:12 INFO mapreduce.Job:  map 100% reduce 100%
+17/05/06 01:59:12 INFO mapreduce.Job: Job job_1493988177333_0007 completed successfully
+17/05/06 01:59:12 INFO mapreduce.Job: Counters: 49
+	File System Counters
+		FILE: Number of bytes read=1415
+		FILE: Number of bytes written=215785
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=834
+		HDFS: Number of bytes written=1225
+		HDFS: Number of read operations=6
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=2
+	Job Counters 
+		Launched map tasks=1
+		Launched reduce tasks=1
+		Data-local map tasks=1
+		Total time spent by all maps in occupied slots (ms)=3384
+		Total time spent by all reduces in occupied slots (ms)=3641
+		Total time spent by all map tasks (ms)=3384
+		Total time spent by all reduce tasks (ms)=3641
+		Total vcore-seconds taken by all map tasks=3384
+		Total vcore-seconds taken by all reduce tasks=3641
+		Total megabyte-seconds taken by all map tasks=3465216
+		Total megabyte-seconds taken by all reduce tasks=3728384
+	Map-Reduce Framework
+		Map input records=30
+		Map output records=30
+		Map output bytes=1225
+		Map output materialized bytes=1291
+		Input split bytes=115
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=6
+		Reduce shuffle bytes=1291
+		Reduce input records=30
+		Reduce output records=30
+		Spilled Records=60
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=158
+		CPU time spent (ms)=2060
+		Physical memory (bytes) snapshot=442634240
+		Virtual memory (bytes) snapshot=8070344704
+		Total committed heap usage (bytes)=402653184
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=719
+	File Output Format Counters 
+		Bytes Written=1225
+m1033286@a4ml12199l:~$ hadoop fs -cat /output_mr_mapsidejoin/*
+17/05/06 01:59:28 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+100	Mumbai-Juhu	FLS	2015-01-01	36748.74
+100	Mumbai-Juhu	FLS	2015-01-02	47829.85
+100	Mumbai-Juhu	FLS	2015-01-03	29274.82
+100	Mumbai-Juhu	FLS	2015-01-04	38495.38
+100	Mumbai-Juhu	FLS	2015-01-05	56838.47
+101	Mumbai-Bandra	FLS	2015-01-01	36348.74
+101	Mumbai-Bandra	FLS	2015-01-02	43729.85
+101	Mumbai-Bandra	FLS	2015-01-03	29274.82
+101	Mumbai-Bandra	FLS	2015-01-04	38295.38
+101	Mumbai-Bandra	FLS	2015-01-05	59368.47
+102	Mumbai-Malad	SPL	2015-01-05	58457.47
+102	Mumbai-Malad	SPL	2015-01-04	38837.38
+102	Mumbai-Malad	SPL	2015-01-03	29835.82
+102	Mumbai-Malad	SPL	2015-01-02	43834.85
+102	Mumbai-Malad	SPL	2015-01-01	36946.74
+103	Mumbai-Vashi	SPL	2015-01-01	94548.74
+103	Mumbai-Vashi	SPL	2015-01-05	83568.47
+103	Mumbai-Vashi	SPL	2015-01-04	58495.38
+103	Mumbai-Vashi	SPL	2015-01-03	85674.82
+103	Mumbai-Vashi	SPL	2015-01-02	84529.85
+104	Mumbai-Khar	HSR	2015-01-01	94835.74
+104	Mumbai-Khar	HSR	2015-01-02	84945.85
+104	Mumbai-Khar	HSR	2015-01-03	85936.82
+104	Mumbai-Khar	HSR	2015-01-04	58936.38
+104	Mumbai-Khar	HSR	2015-01-05	89346.47
+105	Mumbai-Powai	HSR	2015-01-01	99456.74
+105	Mumbai-Powai	HSR	2015-01-02	83985.85
+105	Mumbai-Powai	HSR	2015-01-03	89357.82
+105	Mumbai-Powai	HSR	2015-01-04	94562.38
+105	Mumbai-Powai	HSR	2015-01-05	94562.47
+m1033286@a4ml12199l:~$ 
+
