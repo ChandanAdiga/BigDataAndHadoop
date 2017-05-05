@@ -88,7 +88,7 @@ m1033286@a4ml12199l:~$ hadoop fs -cat /output_mr_equijoin/*
 
 
 					==========================================================================================
-					Above o/p was of total sale per store. Now, modified to display each sale entries of store
+					Above o/p was of total sale per store. Now, modified reducer to display each sale entries of store
 					==========================================================================================
 
 m1033286@a4ml12199l:~$ hadoop jar Desktop/GIT_HADOOP/BigDataAndHadoop/Assignment4/JAR/MR_EquiJoinStoreLocationSales.jar /inputs/mr_inputs/store_details /inputs/mr_inputs/store_sales /output_mr_equijoin1
