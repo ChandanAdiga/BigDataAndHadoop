@@ -1,0 +1,9 @@
+Assignment 01:
+	1. For the given input files (module5_ex1_f1 and module5_ex1_f1) based on first fields from file1
+	and 2, apply the Map side join method for it.
+	2. For the given weather data set, find out the hot and the cold days of the year. [Any day having
+	max temperature more than 42 is a hot day and the day having minimum temperature less than
+	8 is a cold day].
+	Your output should have following fields:
+	<Date>
+	<Hot/Cold Day>
