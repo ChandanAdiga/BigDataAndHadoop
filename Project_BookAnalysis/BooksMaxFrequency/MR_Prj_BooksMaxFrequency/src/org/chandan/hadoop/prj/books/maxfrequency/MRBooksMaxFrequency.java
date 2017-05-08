@@ -80,8 +80,8 @@ public class MRBooksMaxFrequency {
 
         job.setReducerClass(MyReducer.class);
 
-        job.setOutputKeyClass(TextInputFormat.class);
-        job.setOutputValueClass(TextOutputFormat.class);
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(Text.class);
 
         job.setInputFormatClass(TextInputFormat.class);
         job.setOutputFormatClass(TextOutputFormat.class);
