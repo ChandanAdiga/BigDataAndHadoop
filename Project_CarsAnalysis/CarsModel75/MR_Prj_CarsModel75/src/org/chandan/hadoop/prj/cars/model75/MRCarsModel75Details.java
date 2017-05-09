@@ -1,4 +1,4 @@
-package org.chandan.hadoop.prj.cars.frequency200hp;
+package org.chandan.hadoop.prj.cars.model75;
 
 import java.io.IOException;
 
