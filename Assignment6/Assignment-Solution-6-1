@@ -1,0 +1,30 @@
+
+grunt> geeks = load 'hdfs://localhost:9000/inputs/mr_inputs/info.txt' using  PigStorage(',') as (name,age,degree,city,company);
+2017-05-10 22:52:26,026 [main] INFO  org.apache.hadoop.conf.Configuration.deprecation - fs.default.name is deprecated. Instead, use fs.defaultFS
+grunt> name_city = foreach geeks generate $0 as name,  $3 as city;
+grunt> output = limit name_city 6;
+2017-05-10 22:53:50,957 [main] ERROR org.apache.pig.tools.grunt.Grunt - ERROR 1200: <line 3, column 0>  mismatched input 'output' expecting EOF
+Details at logfile: /home/m1033286/pig_1494436927203.log
+grunt> outputtrim = limit name_city 6;
+grunt> dump outputtrim;
+2017-05-10 22:54:20,558 [main] INFO  org.apache.pig.tools.pigstats.ScriptState - Pig features used in the script: LIMIT
+2017-05-10 22:54:20,607 [main] INFO  org.apache.hadoop.conf.Configuration.deprecation - fs.default.name is deprecated. Instead, use fs.defaultFS
+2017-05-10 22:54:20,612 [main] INFO  org.apache.pig.data.SchemaTupleBackend - Key [pig.schematuple] was not set... will not generate code.
+2017-05-10 22:54:20,644 [main] INFO  org.apache.pig.newplan.logical.optimizer.LogicalPlanOptimizer - {RULES_ENABLED=[AddForEach, ColumnMapKeyPrune, ConstantCalculator, GroupByConstParallelSetter, LimitOptimizer, LoadTypeCastInserter, MergeFilter, MergeForEach, PartitionFilterOptimizer, PredicatePushdownOptimizer, PushDownForEachFlatten, PushUpFilter, SplitFilter, StreamTypeCastInserter]}
+2017-05-10 22:54:20,672 [main] INFO  org.apache.pig.newplan.logical.rules.ColumnPruneVisitor - Columns pruned for geeks: $1, $2, $4
+2017-05-10 22:54:20,891 [main] INFO  org.apache.pig.data.SchemaTupleBackend - Key [pig.schematuple] was not set... will not generate code.
+2017-05-10 22:54:20,978 [main] INFO  org.apache.hadoop.conf.Configuration.deprecation - fs.default.name is deprecated. Instead, use fs.defaultFS
+2017-05-10 22:54:20,988 [main] INFO  org.apache.hadoop.mapreduce.lib.input.FileInputFormat - Total input paths to process : 1
+2017-05-10 22:54:20,994 [main] INFO  org.apache.pig.backend.hadoop.executionengine.util.MapRedUtil - Total input paths to process : 1
+2017-05-10 22:54:21,287 [main] INFO  org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter - Saved output of task 'attempt__0001_m_000001_1' to hdfs://localhost:9000/tmp/temp188705289/tmp1582635513/_temporary/0/task__0001_m_000001
+2017-05-10 22:54:21,331 [main] INFO  org.apache.hadoop.conf.Configuration.deprecation - fs.default.name is deprecated. Instead, use fs.defaultFS
+2017-05-10 22:54:21,340 [main] WARN  org.apache.pig.data.SchemaTupleBackend - SchemaTupleBackend has already been initialized
+2017-05-10 22:54:21,354 [main] INFO  org.apache.hadoop.mapreduce.lib.input.FileInputFormat - Total input paths to process : 1
+2017-05-10 22:54:21,354 [main] INFO  org.apache.pig.backend.hadoop.executionengine.util.MapRedUtil - Total input paths to process : 1
+(Chandan,Bengaluru)
+(Adiga,Delhi)
+(Anthony,Shimoga)
+(Aravind,Mangaluru)
+(Aneesh,Putturu)
+(Amaresh,Kasargod)
+

@@ -1,0 +1,47 @@
+grunt> geeks = load 'hdfs://localhost:9000/inputs/mr_inputs/info.txt' using  PigStorage(',') as (name,age,degree,city,company);
+2017-05-11 00:56:25,230 [main] INFO  org.apache.hadoop.conf.Configuration.deprecation - fs.default.name is deprecated. Instead, use fs.defaultFS
+grunt> register 'hdfs://localhost:9000/inputs/pig_inputs/PIG_MyUdf.jar'
+2017-05-11 00:56:44,665 [main] INFO  org.apache.hadoop.conf.Configuration.deprecation - fs.default.name is deprecated. Instead, use fs.defaultFS
+grunt> define concat_fun org.chandan.hadoop.pig.sample.SampleUdf(); 
+grunt> concat_result = foreach geeks generate concat_fun($0,'from',$3);
+grunt> trimresult = limit concat_result 6;
+grunt> dump trimresult;
+2017-05-11 00:57:22,333 [main] INFO  org.apache.pig.tools.pigstats.ScriptState - Pig features used in the script: LIMIT
+2017-05-11 00:57:22,376 [main] INFO  org.apache.hadoop.conf.Configuration.deprecation - fs.default.name is deprecated. Instead, use fs.defaultFS
+2017-05-11 00:57:22,378 [main] INFO  org.apache.pig.data.SchemaTupleBackend - Key [pig.schematuple] was not set... will not generate code.
+2017-05-11 00:57:22,407 [main] INFO  org.apache.pig.newplan.logical.optimizer.LogicalPlanOptimizer - {RULES_ENABLED=[AddForEach, ColumnMapKeyPrune, ConstantCalculator, GroupByConstParallelSetter, LimitOptimizer, LoadTypeCastInserter, MergeFilter, MergeForEach, PartitionFilterOptimizer, PredicatePushdownOptimizer, PushDownForEachFlatten, PushUpFilter, SplitFilter, StreamTypeCastInserter]}
+2017-05-11 00:57:22,436 [main] INFO  org.apache.pig.newplan.logical.rules.ColumnPruneVisitor - Columns pruned for geeks: $1, $2, $4
+2017-05-11 00:57:22,587 [main] INFO  org.apache.pig.data.SchemaTupleBackend - Key [pig.schematuple] was not set... will not generate code.
+2017-05-11 00:57:22,668 [main] INFO  org.apache.hadoop.conf.Configuration.deprecation - fs.default.name is deprecated. Instead, use fs.defaultFS
+2017-05-11 00:57:22,682 [main] INFO  org.apache.hadoop.mapreduce.lib.input.FileInputFormat - Total input paths to process : 1
+2017-05-11 00:57:22,688 [main] INFO  org.apache.pig.backend.hadoop.executionengine.util.MapRedUtil - Total input paths to process : 1
+SampleUdf#exec()
+SampleUdf#exec() i/p: (Chandan,from,Bengaluru)
+SampleUdf#exec() o/p: (Chandan,from,Bengaluru)
+SampleUdf#exec()
+SampleUdf#exec() i/p: (Adiga,from,Delhi)
+SampleUdf#exec() o/p: (Adiga,from,Delhi)
+SampleUdf#exec()
+SampleUdf#exec() i/p: (Anthony,from,Shimoga)
+SampleUdf#exec() o/p: (Anthony,from,Shimoga)
+SampleUdf#exec()
+SampleUdf#exec() i/p: (Aravind,from,Mangaluru)
+SampleUdf#exec() o/p: (Aravind,from,Mangaluru)
+SampleUdf#exec()
+SampleUdf#exec() i/p: (Aneesh,from,Putturu)
+SampleUdf#exec() o/p: (Aneesh,from,Putturu)
+SampleUdf#exec()
+SampleUdf#exec() i/p: (Amaresh,from,Kasargod)
+SampleUdf#exec() o/p: (Amaresh,from,Kasargod)
+2017-05-11 00:57:22,913 [main] INFO  org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter - Saved output of task 'attempt__0001_m_000001_1' to hdfs://localhost:9000/tmp/temp656656133/tmp481382014/_temporary/0/task__0001_m_000001
+2017-05-11 00:57:22,959 [main] INFO  org.apache.hadoop.conf.Configuration.deprecation - fs.default.name is deprecated. Instead, use fs.defaultFS
+2017-05-11 00:57:22,965 [main] WARN  org.apache.pig.data.SchemaTupleBackend - SchemaTupleBackend has already been initialized
+2017-05-11 00:57:22,982 [main] INFO  org.apache.hadoop.mapreduce.lib.input.FileInputFormat - Total input paths to process : 1
+2017-05-11 00:57:22,983 [main] INFO  org.apache.pig.backend.hadoop.executionengine.util.MapRedUtil - Total input paths to process : 1
+((Chandan,from,Bengaluru))
+((Adiga,from,Delhi))
+((Anthony,from,Shimoga))
+((Aravind,from,Mangaluru))
+((Aneesh,from,Putturu))
+((Amaresh,from,Kasargod))
+
