@@ -1,0 +1,64 @@
+
+
+-------------------------------performTableCreation() - START-------------------------------
+log4j:WARN No appenders could be found for logger (org.apache.hadoop.metrics2.lib.MutableMetricsFactory).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+-------------------------------performTableCreation() - END-------------------------------
+
+
+
+
+-------------------------------performDataInsertion() - START-------------------------------
+log4j:WARN No appenders could be found for logger (org.apache.hadoop.metrics2.lib.MutableMetricsFactory).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+Inserted row_1 successfully!
+Inserted row_2 successfully!
+-------------------------------performDataInsertion() - END-------------------------------
+
+
+-------------------------------performDataListTables() - START-------------------------------
+log4j:WARN No appenders could be found for logger (org.apache.hadoop.metrics2.lib.MutableMetricsFactory).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+5 Tables found!
+~~~~~~~~~~~~~~~~~~~~~~~~~
+employee
+employee_dummy
+employee_new
+employee_new1
+employee_table
+-------------------------------performDataListTables() - END-------------------------------
+
+
+
+-------------------------------performRowDump() - START-------------------------------
+log4j:WARN No appenders could be found for logger (org.apache.hadoop.metrics2.lib.MutableMetricsFactory).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+row_1 dump: Chandan Adiga , Chandu
+row_2 dump: Anthony GP , Antz
+-------------------------------performRowDump() - END-------------------------------
+
+
+
+
+-------------------------------performRowDelete() - START-------------------------------
+log4j:WARN No appenders could be found for logger (org.apache.hadoop.metrics2.lib.MutableMetricsFactory).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+row_2 deleted successfully!
+-------------------------------performRowDelete() - END-------------------------------
+
+
+
+-------------------------------performRowDump() - START-------------------------------
+log4j:WARN No appenders could be found for logger (org.apache.hadoop.metrics2.lib.MutableMetricsFactory).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+row_1 dump: Chandan Adiga , Chandu
+row_2 dump: null , null
+-------------------------------performRowDump() - END-------------------------------
+
+

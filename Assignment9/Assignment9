@@ -1,0 +1,6 @@
+Assignment 01:
+	1. Create an HBase table ‘employee’ with two column families ‘official’ and ‘personal’
+	2. Insert some records to this table (with whatever number of columns you want), update some of
+	them and finally delete the latest record
+	3. Repeat the same steps as in exercise 2, but this time with a Java API
+	4. Load the data of the table from step2 in Pig and dump the records to the terminal

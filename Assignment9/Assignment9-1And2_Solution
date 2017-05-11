@@ -1,0 +1,138 @@
+m1033286@a4ml12199l:~$ start-hbase.sh 
+starting master, logging to /home/m1033286/hbase-0.98.9-hadoop2/logs/hbase-m1033286-master-a4ml12199l.out
+m1033286@a4ml12199l:~$ jps
+19097 SecondaryNameNode
+19388 NodeManager
+18737 NameNode
+20135 Jps
+4529 org.eclipse.equinox.launcher_1.3.100.v20150511-1540.jar
+19256 ResourceManager
+20022 HMaster
+18901 DataNode
+m1033286@a4ml12199l:~$ hbase shell
+2017-05-11 14:37:09,475 INFO  [main] Configuration.deprecation: hadoop.native.lib is deprecated. Instead, use io.native.lib.available
+HBase Shell; enter 'help<RETURN>' for list of supported commands.
+Type "exit<RETURN>" to leave the HBase Shell
+Version 0.98.9-hadoop2, r96878ece501b0643e879254645d7f3a40eaf101f, Mon Dec 15 23:00:20 PST 2014
+
+hbase(main):001:0> status .
+hbase(main):002:0* 
+hbase(main):003:0* 
+hbase(main):004:0* status;
+hbase(main):005:0* version
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/m1033286/hbase-0.98.9-hadoop2/lib/slf4j-log4j12-1.6.4.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/m1033286/hadoop-2.6.1/share/hadoop/common/lib/slf4j-log4j12-1.7.5.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+2017-05-11 14:38:13,556 WARN  [main] util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+1 servers, 0 dead, 2.0000 average load
+
+NoMethodError: undefined method `status' for nil:NilClass
+
+hbase(main):006:0> status
+1 servers, 0 dead, 2.0000 average load
+
+hbase(main):007:0> version
+0.98.9-hadoop2, r96878ece501b0643e879254645d7f3a40eaf101f, Mon Dec 15 23:00:20 PST 2014
+
+hbase(main):008:0> whoami
+m1033286 (auth:SIMPLE)
+    groups: m1033286, adm, cdrom, sudo, dip, plugdev, lpadmin, sambashare, libvirtd
+
+hbase(main):009:0> 
+hbase(main):010:0* 
+hbase(main):011:0* ;
+hbase(main):012:0* 
+m1033286@a4ml12199l:~$ 
+m1033286@a4ml12199l:~$ hbase shell
+2017-05-11 14:39:01,372 INFO  [main] Configuration.deprecation: hadoop.native.lib is deprecated. Instead, use io.native.lib.available
+HBase Shell; enter 'help<RETURN>' for list of supported commands.
+Type "exit<RETURN>" to leave the HBase Shell
+Version 0.98.9-hadoop2, r96878ece501b0643e879254645d7f3a40eaf101f, Mon Dec 15 23:00:20 PST 2014
+
+hbase(main):001:0> 
+hbase(main):002:0* 
+hbase(main):003:0* 
+hbase(main):004:0* create 'employee','official','personal'
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/m1033286/hbase-0.98.9-hadoop2/lib/slf4j-log4j12-1.6.4.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/m1033286/hadoop-2.6.1/share/hadoop/common/lib/slf4j-log4j12-1.7.5.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+2017-05-11 14:40:22,248 WARN  [main] util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+0 row(s) in 2.2450 seconds
+
+=> Hbase::Table - employee
+hbase(main):005:0> describe employee
+NameError: undefined local variable or method `employee' for #<Object:0x43ac0a68>
+
+hbase(main):006:0> describe 'employee'
+hbase(main):027:0* 
+hbase(main):028:0* put 'employee','1','official:name','Chandan Adiga'
+Table employee is ENABLED                                                                                                                                                                       
+COLUMN FAMILIES DESCRIPTION                                                                                                                                                                     
+{NAME => 'official', BLOOMFILTER => 'ROW', VERSIONS => '1', IN_MEMORY => 'false', KEEP_DELETED_CELLS => 'FALSE', DATA_BLOCK_ENCODING => 'NONE', TTL => 'FOREVER', COMPRESSION => 'NONE', MIN_VER
+SIONS => '0', BLOCKCACHE => 'true', BLOCKSIZE => '65536', REPLICATION_SCOPE => '0'}                                                                                                             
+{NAME => 'personal', BLOOMFILTER => 'ROW', VERSIONS => '1', IN_MEMORY => 'false', KEEP_DELETED_CELLS => 'FALSE', DATA_BLOCK_ENCODING => 'NONE', TTL => 'FOREVER', COMPRESSION => 'NONE', MIN_VER
+SIONS => '0', BLOCKCACHE => 'true', BLOCKSIZE => '65536', REPLICATION_SCOPE => '0'}                                                                                                             
+2 row(s) in 0.0890 seconds
+
+0 row(s) in 0.1530 seconds
+
+hbase(main):029:0> put 'employee','1','personal:nick_name','Chandu'
+0 row(s) in 0.0180 seconds
+
+hbase(main):030:0> get 'employee','1'
+COLUMN                                            CELL                                                                                                                                          
+ official:name                                    timestamp=1494494087083, value=Chandan Adiga                                                                                                  
+ personal:nick_name                               timestamp=1494494168876, value=Chandu                                                                                                         
+2 row(s) in 0.0390 seconds
+
+hbase(main):031:0> put 'employee','2','official:name','Anthony GP'
+0 row(s) in 0.0060 seconds
+
+hbase(main):032:0> put 'employee','1','personal:nick_name','Antz'
+0 row(s) in 0.0060 seconds
+
+hbase(main):033:0> get 'employee','2'
+COLUMN                                            CELL                                                                                                                                          
+ official:name                                    timestamp=1494494259561, value=Anthony GP                                                                                                     
+1 row(s) in 0.0080 seconds
+
+hbase(main):034:0> put 'employee','2','personal:nick_name','Antz'
+0 row(s) in 0.0080 seconds
+
+hbase(main):035:0> get 'employee','1'
+COLUMN                                            CELL                                                                                                                                          
+ official:name                                    timestamp=1494494087083, value=Chandan Adiga                                                                                                  
+ personal:nick_name                               timestamp=1494494268780, value=Antz                                                                                                           
+2 row(s) in 0.0120 seconds
+
+hbase(main):036:0> put 'employee','1','personal:nick_name','Chandu'
+0 row(s) in 0.0120 seconds
+
+hbase(main):037:0> get 'employee','1'
+COLUMN                                            CELL                                                                                                                                          
+ official:name                                    timestamp=1494494087083, value=Chandan Adiga                                                                                                  
+ personal:nick_name                               timestamp=1494494315052, value=Chandu                                                                                                         
+2 row(s) in 0.0080 seconds
+
+hbase(main):038:0> get 'employee','2'
+COLUMN                                            CELL                                                                                                                                          
+ official:name                                    timestamp=1494494259561, value=Anthony GP                                                                                                     
+ personal:nick_name                               timestamp=1494494294898, value=Antz                                                                                                           
+2 row(s) in 0.0090 seconds
+
+hbase(main):039:0> delete 'employee', '2', 'personal:name'
+0 row(s) in 0.0400 seconds
+
+hbase(main):040:0> delete 'employee', '2', 'personal:nick_name'
+0 row(s) in 0.0100 seconds
+
+hbase(main):041:0> get 'employee','2'
+COLUMN                                            CELL                                                                                                                                          
+ official:name                                    timestamp=1494494259561, value=Anthony GP                                                                                                     
+1 row(s) in 0.0120 seconds
+
+hbase(main):042:0> 
+
+
