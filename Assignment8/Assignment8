@@ -1,0 +1,7 @@
+Assignment 01:
+	1. Create a managed hive table sales_info (store_id,txn_dt,txn_amt) and load the file data of-
+	module_7_ex1 into it
+	2. Create an external table sales_master(store_id,store_name) and load the file data of
+	module_7_ex2 into it
+	3. Now create a third external hive table sales_report(store_id, store_name, txn_amt), which
+	should have the data from equi join of tables of the first two steps

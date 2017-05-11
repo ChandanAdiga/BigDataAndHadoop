@@ -1,0 +1,84 @@
+m1033286@a4ml12199l:~$ hive
+
+Logging initialized using configuration in jar:file:/home/m1033286/apache-hive-1.2.2/lib/hive-common-1.2.2.jar!/hive-log4j.properties
+hive> create table sales_info(store_id INT, txn_dt DATE, txn_amt DOUBLE) row format delimited fields terminated by ','; 
+OK
+Time taken: 1.23 seconds
+hive> load data local inpath '/home/m1033286/Desktop/GIT_HADOOP/BigDataAndHadoop/Assignment8/DataSets/module_7_ex1' into table sales_info;
+Loading data to table default.sales_info
+Table default.sales_info stats: [numFiles=1, totalSize=284]
+OK
+Time taken: 0.746 seconds
+hive> select * from sales_info;
+OK
+100	2015-01-01	12649.98
+100	2015-01-01	2345.85
+100	2015-01-01	3563.65
+101	2015-01-01	6382.76
+101	2015-01-01	35729.09
+101	2015-01-02	23479.65
+101	2015-01-02	45627.87
+102	2015-01-01	62845.62
+102	2015-01-01	62978.27
+103	2015-01-02	45678.92
+103	2015-01-03	56782.71
+103	NULL	263822.96
+Time taken: 0.404 seconds, Fetched: 12 row(s)
+
+
+
+
+hive> create EXTERNAL table sales_master(store_id INT, store_name STRING) row format delimited fields terminated by ',' LOCATION '/user/hive/warehouse/sales_master' ; 
+OK
+Time taken: 1.23 seconds
+hive>  load data local inpath '/home/m1033286/Desktop/GIT_HADOOP/BigDataAndHadoop/Assignment8/DataSets/module_7_ex2' into table sales_master;
+Loading data to table default.sales_master
+Table default.sales_master stats: [numFiles=1, totalSize=122]
+OK
+Time taken: 0.226 seconds
+hive> select * from sales_master;
+OK
+100	Mumbai-Powai
+101	Mumbai-Goregaon
+102	Mumbai-Dadar
+103	Mumbai-Thane
+104	Pune-Aundh
+105	Pune-Magarpatta
+106	Pune-Kharadi
+Time taken: 0.083 seconds, Fetched: 7 row(s)
+hive> 
+
+
+
+
+
+hive> CREATE EXTERNAL TABLE sales_report(store_id INT, store_name STRING, txn_amt DOUBLE) COMMENT 'Sales report summary' Row format delimited Fields terminated by ',' LOCATION '/user/hive/warehouse/sales_report_new';
+OK
+Time taken: 0.074 seconds
+hive> INSERT OVERWRITE TABLE sales_report SELECT T1.store_id,T2.store_name,T1.txn_amt FROM sales_info T1 JOIN sales_master T2 ON T1.store_id = T2.store_id;
+Query ID = m1033286_20170511124344_fa900535-5da0-4ba3-a7e3-dad770f838fa
+Total jobs = 1
+17/05/11 12:43:47 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Execution log at: /tmp/m1033286/m1033286_20170511124344_fa900535-5da0-4ba3-a7e3-dad770f838fa.log
+2017-05-11 12:43:47	Starting to launch local task to process map join;	maximum memory = 477626368
+2017-05-11 12:43:49	Dump the side-table for tag: 1 with group count: 7 into file: file:/tmp/m1033286/ff77b8c2-f4c9-4102-8f56-bdac79c25362/hive_2017-05-11_12-43-44_663_1384932124436906651-1/-local-10002/HashTable-Stage-4/MapJoin-mapfile01--.hashtable
+2017-05-11 12:43:49	Uploaded 1 File to: file:/tmp/m1033286/ff77b8c2-f4c9-4102-8f56-bdac79c25362/hive_2017-05-11_12-43-44_663_1384932124436906651-1/-local-10002/HashTable-Stage-4/MapJoin-mapfile01--.hashtable (488 bytes)
+2017-05-11 12:43:49	End of local task; Time Taken: 1.133 sec.
+Execution completed successfully
+MapredLocal task succeeded
+...
+hive> select * from sales_report;
+OK
+100	Mumbai-Powai	12649.98
+100	Mumbai-Powai	2345.85
+100	Mumbai-Powai	3563.65
+101	Mumbai-Goregaon	6382.76
+101	Mumbai-Goregaon	35729.09
+101	Mumbai-Goregaon	23479.65
+101	Mumbai-Goregaon	45627.87
+102	Mumbai-Dadar	62845.62
+102	Mumbai-Dadar	62978.27
+103	Mumbai-Thane	45678.92
+103	Mumbai-Thane	56782.71
+103	Mumbai-Thane	263822.96
+Time taken: 0.400 seconds, Fetched: 12 row(s)
