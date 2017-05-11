@@ -1,0 +1,11 @@
+Assignment 01:
+	1. Create a managed table called store_details with schema -> (store_location, store_description,
+	store_type)
+	2. Load the file store_details_file into this table, query and see if you are able to see the data
+	properly
+	3. Create a managed table called store_sales with schema:-(store_location, operation_date,
+	tot_sales)
+	4. Load the file store_txns_file into this table, query and see if you are able to see the data
+	properly
+	5. Now Create an external table called stores_report by joining store_details and store_sales
+	based on store_location column and verify if the results look good

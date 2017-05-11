@@ -1,0 +1,171 @@
+m1033286@a4ml12199l:~$ hive
+
+Logging initialized using configuration in jar:file:/home/m1033286/apache-hive-1.2.2/lib/hive-common-1.2.2.jar!/hive-log4j.properties
+hive> create table store_details(store_location String, store_description String, store_type String) row format delimited fields terminated by ','; 
+OK
+Time taken: 1.736 seconds
+hive> load data local inpath '/home/m1033286/Desktop/GIT_HADOOP/BigDataAndHadoop/Assignment7/DataSet/store_details' into table store_details;
+Loading data to table default.store_details
+Table default.store_details stats: [numFiles=1, totalSize=124]
+OK
+Time taken: 1.621 seconds
+hive> exit;
+m1033286@a4ml12199l:~$ hadoop fs -cat /user/hive/warehouse/store_details/store_details
+17/05/11 11:32:09 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+100,Mumbai-Juhu,FLS
+101,Mumbai-Bandra,FLS
+102,Mumbai-Malad,SPL
+103,Mumbai-Vashi,SPL
+104,Mumbai-Khar,HSR
+105,Mumbai-Powai,HSRm1033286@a4ml12199l:~$
+m1033286@a4ml12199l:~$ hive
+
+Logging initialized using configuration in jar:file:/home/m1033286/apache-hive-1.2.2/lib/hive-common-1.2.2.jar!/hive-log4j.properties
+
+
+
+hive> create table store_sales(store_location String, operation_date Date, tot_sales Int) row format delimited fields terminated by ','; 
+OK
+Time taken: 1.784 seconds
+hive> describe formatted store_sales;
+OK
+# col_name            	data_type           	comment             
+	 	 
+store_location      	string              	                    
+operation_date      	date                	                    
+tot_sales           	int                 	                    
+	 	 
+# Detailed Table Information	 	 
+Database:           	default             	 
+Owner:              	m1033286            	 
+CreateTime:         	Thu May 11 11:34:09 IST 2017	 
+LastAccessTime:     	UNKNOWN             	 
+Protect Mode:       	None                	 
+Retention:          	0                   	 
+Location:           	hdfs://localhost:9000/user/hive/warehouse/store_sales	 
+Table Type:         	MANAGED_TABLE       	 
+Table Parameters:	 	 
+	transient_lastDdlTime	1494482649          
+	 	 
+# Storage Information	 	 
+SerDe Library:      	org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe	 
+InputFormat:        	org.apache.hadoop.mapred.TextInputFormat	 
+OutputFormat:       	org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat	 
+Compressed:         	No                  	 
+Num Buckets:        	-1                  	 
+Bucket Columns:     	[]                  	 
+Sort Columns:       	[]                  	 
+Storage Desc Params:	 	 
+	field.delim         	,                   
+	serialization.format	,                   
+Time taken: 0.461 seconds, Fetched: 29 row(s)
+hive> load data local inpath '/home/m1033286/Desktop/GIT_HADOOP/BigDataAndHadoop/Assignment7/DataSet/store_sales' into table store_sales;
+OK
+Time taken: 0.948 seconds
+hive> exit;
+
+
+
+m1033286@a4ml12199l:~$ hadoop dfs -ls /user/hive/warehouse/store_sales
+DEPRECATED: Use of this script to execute hdfs command is deprecated.
+Instead use the hdfs command for it.
+
+17/05/11 11:36:01 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Found 1 items
+-rwxrwxr-x   1 m1033286 supergroup        719 2017-05-11 11:35 /user/hive/warehouse/store_sales/store_sales
+m1033286@a4ml12199l:~$ hive
+
+Logging initialized using configuration in jar:file:/home/m1033286/apache-hive-1.2.2/lib/hive-common-1.2.2.jar!/hive-log4j.properties
+hive> select * from store_sales;
+OK
+100	2015-01-01	36748
+100	2015-01-02	47829
+100	2015-01-03	29274
+100	2015-01-04	38495
+100	2015-01-05	56838
+101	2015-01-01	36348
+101	2015-01-02	43729
+101	2015-01-03	29274
+101	2015-01-04	38295
+101	2015-01-05	59368
+102	2015-01-01	36946
+102	2015-01-02	43834
+102	2015-01-03	29835
+102	2015-01-04	38837
+102	2015-01-05	58457
+103	2015-01-01	94548
+103	2015-01-02	84529
+103	2015-01-03	85674
+103	2015-01-04	58495
+103	2015-01-05	83568
+104	2015-01-01	94835
+104	2015-01-02	84945
+104	2015-01-03	85936
+104	2015-01-04	58936
+104	2015-01-05	89346
+105	2015-01-01	99456
+105	2015-01-02	83985
+105	2015-01-03	89357
+105	2015-01-04	94562
+105	2015-01-05	94562
+Time taken: 2.094 seconds, Fetched: 30 row(s)
+
+
+
+hive>create external table stores_report(store_location string, store_description string, store_type string, operation_date DATE, total_sales int) comment 'Stores report table' row format delimited fields terminated by ',' location '/user/hive/warehouse/stores_report';
+OK
+Time taken: 0.565 seconds
+
+
+
+hive> insert overwrite table stores_report select T1.store_location,T1.store_description,T1.store_type,T2.operation_date,T2.tot_sales from store_details T1 join store_sales T2 on T1.store_location = T2.store_location;
+Query ID = m1033286_20170511114546_d5afcb99-ffce-4d46-af28-410474e395e6
+Total jobs = 1
+17/05/11 11:45:49 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Execution log at: /tmp/m1033286/m1033286_20170511114546_d5afcb99-ffce-4d46-af28-410474e395e6.log
+2017-05-11 11:45:50	Starting to launch local task to process map join;	maximum memory = 477626368
+2017-05-11 11:45:52	Dump the side-table for tag: 0 with group count: 6 into file: file:/tmp/m1033286/49dbe848-ec9a-4805-bdfd-727942bb6a9b/hive_2017-05-11_11-45-46_275_6747405546168635106-1/-local-10002/HashTable-Stage-4/MapJoin-mapfile00--.hashtable
+2017-05-11 11:45:52	Uploaded 1 File to: file:/tmp/m1033286/49dbe848-ec9a-4805-bdfd-727942bb6a9b/hive_2017-05-11_11-45-46_275_6747405546168635106-1/-local-10002/HashTable-Stage-4/MapJoin-mapfile00--.hashtable (493 bytes)
+2017-05-11 11:45:52	End of local task; Time Taken: 1.83 sec.
+Execution completed successfully
+MapredLocal task succeeded
+...
+Stage-Stage-4: Map: 1   Cumulative CPU: 4.96 sec   HDFS Read: 0 HDFS Write: 0 FAIL
+Total MapReduce CPU Time Spent: 4 seconds 960 msec
+hive> select * from stores_report;
+OK
+100	Mumbai-Juhu	FLS	2015-01-01	36748
+100	Mumbai-Juhu	FLS	2015-01-02	47829
+100	Mumbai-Juhu	FLS	2015-01-03	29274
+100	Mumbai-Juhu	FLS	2015-01-04	38495
+100	Mumbai-Juhu	FLS	2015-01-05	56838
+101	Mumbai-Bandra	FLS	2015-01-01	36348
+101	Mumbai-Bandra	FLS	2015-01-02	43729
+101	Mumbai-Bandra	FLS	2015-01-03	29274
+101	Mumbai-Bandra	FLS	2015-01-04	38295
+101	Mumbai-Bandra	FLS	2015-01-05	59368
+102	Mumbai-Malad	SPL	2015-01-01	36946
+102	Mumbai-Malad	SPL	2015-01-02	43834
+102	Mumbai-Malad	SPL	2015-01-03	29835
+102	Mumbai-Malad	SPL	2015-01-04	38837
+102	Mumbai-Malad	SPL	2015-01-05	58457
+103	Mumbai-Vashi	SPL	2015-01-01	94548
+103	Mumbai-Vashi	SPL	2015-01-02	84529
+103	Mumbai-Vashi	SPL	2015-01-03	85674
+103	Mumbai-Vashi	SPL	2015-01-04	58495
+103	Mumbai-Vashi	SPL	2015-01-05	83568
+104	Mumbai-Khar	HSR	2015-01-01	94835
+104	Mumbai-Khar	HSR	2015-01-02	84945
+104	Mumbai-Khar	HSR	2015-01-03	85936
+104	Mumbai-Khar	HSR	2015-01-04	58936
+104	Mumbai-Khar	HSR	2015-01-05	89346
+105	Mumbai-Powai	HSR	2015-01-01	99456
+105	Mumbai-Powai	HSR	2015-01-02	83985
+105	Mumbai-Powai	HSR	2015-01-03	89357
+105	Mumbai-Powai	HSR	2015-01-04	94562
+105	Mumbai-Powai	HSR	2015-01-05	94562
+Time taken: 0.081 seconds, Fetched: 30 row(s)
+
+
+
+
